@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sazlamalar</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/settings.js" defer></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="bg-dark">
+    <div class="container-fluid">
+        <hr class="bg-light">
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="index.html" class="btn btn-warning">Əsas Səhifə</a>
+                <button class="btn btn-danger" onclick="onClearLocalStorage()">Məlumatları sıfırla</button>
+                <hr class="bg-light">
+                <center>
+                <span class="display-4 text-danger">Diqqət!</span>
+                </center>
+                <hr class="bg-light">
+                <p class="h3 text-light" style="text-align: justify;">(Məlumatları sıfırla) düyməsinə basıldığı zaman, 
+                    proqramın daxilində istifadə olunan məlumatlar təmizlənəcək və 
+                    ilkin vəziyyətə gətiriləcək. Proqramı ilk dəfə açdıqda, bir çox 
+                    məlumatlar artıq yüklənmiş olur. İstifadəçi özü digər məlumatları 
+                    proqrama daxil edə bilər. Proqramın Backend hissəsi olmadığına 
+                    görə, yadda saxlanılan məlumatlar ancaq proqramın istifadə olunduğu 
+                    veb brovserdə qalacaq.
+                </p>
+                
+            </div>   
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <hr class="bg-light">
+                <center>
+                <span class="display-4 text-danger">Əlavə Məlumatlar</span><br><br>
+                </center>
+                <ul class="nav nav-tabs" role="tab-list">
+                    <li class="nav-item">
+                        <a href="#settingsPage" data-toggle="tab" class="nav-link active">Sazlamalar bölməsi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#mainPage" data-toggle="tab" class="nav-link ">Əsas Səhifə</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#shopping" data-toggle="tab" class="nav-link ">Alış-Veriş bölməsi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#loginPage" data-toggle="tab" class="nav-link ">Giriş bölməsi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#myComputersPage" data-toggle="tab" class="nav-link ">Komputerlərim bölməsi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#ordersPage" data-toggle="tab" class="nav-link ">Sifarişlərim bölməsi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#stepsPage" data-toggle="tab" class="nav-link ">Addımlar bölməsi</a>
+                    </li>
+                </ul>
+                <div class="tab-content" style="min-height: 500px;">
+                    <div id="settingsPage" class="container tab-pane active">
+                        <br>
+                        <p class="h6 text-light">
+                            Bu bölmədə proqramda istifadə olunan şablon məlumatları sıfırlamaq mümkündür. 
+                            Bu proqramı qurmaq üçün aşağıdakı proqramlardan istifadə olunub:
+                        </p>
+                        <ul class="text-light">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>Bootstrap</li>
+                            <li>jQuery</li>
+                            <li>JavaScript</li>
+                        </ul>
+                        <p class="h6 text-light">
+                            Proqram ilk açıldığı zaman <strong class="text-danger">index.js</strong> faylının daxilində yazılmış olan bir 
+                            neçə obyekt yaradılır və brovserin localStorage yaddaşına yazılır. Proyektin 
+                            daxilində bu məlumatlar istifadə olunur. Proqram sadəcə lokal işləyir. Heç bir 
+                            servisə bağlanmır. Proyektin sadəcə front-end hissəsi qurulub.
+                        </p>
+                    </div>
+                    <div id="mainPage" class="container tab-pane fade">
+                        <br>
+                        <p class="h6 text-light">
+                            Bu səhifədə istifadəçi digər səhifələrə daxil ola bilər. 
+                            Komputer alış-verişi səhifəsinə daxil olarsa, onda, mövcud 
+                            qeydiyyat olunmuş komputerlərin kateqoriyalarını görəcək. 
+                            Sonradan qeydiyyat olunmuş komputerlərdə həmçinin siyahıda 
+                            görünəcək. İstifadəçi komputerləri axtara bilər. <br><br>
+
+                            <strong>Hesaba daxil olmaq</strong> düyməsinə basaraq hesabına daxil ola bilər. 
+                            Əgər mövcud hesabı yoxdursa, onda, özünə yeni hesab aça bilər. 
+                            Bu məlumatlar sadəcə cari brovserdə yadda saxlanır. <br><br>
+
+                            Hesaba daxil olan istifadəçi proqramı satıcı kimi istifadə etməyə 
+                            başlayır. Həmçinin alıcı kimidə istifadə edə bilər. Yəni, siyahıdan 
+                            komputer seçib, səbətə atıb komputerləri ala bilər. Satıcı kimi hesabına 
+                            daxil olmuş istifadəçi, sistemə yeni komputerlər qeydiyyat edə bilər və 
+                            özünün satdığı komputerlərin sifarişlərini görə bilər. <br><br>
+                        </p>
+                    </div>
+                    <div id="shopping" class="container tab-pane fade">
+                        <br>
+                        <p class="h6 text-light">
+                            Bu bölmədə istifadəçi proqramı alıcı kimi istifadə edir. Satıcı kimi hesabına daxil olmuş 
+                            olsada, olmasada. Alıcı komputerlərin kateqoriyaları siyahısından istədiyi kateqoriyaya 
+                            daxil ola bilər və istədiyi komputeri səbətinə ata bilər. Həmçinin, alıcı komputerlərin 
+                            şəkilləri üzərində mausun sol düyməsinə basmaqla, komputer haqqında ətraflı məlumat ala 
+                            bilər. Almaq istədiyi komputerləri səbətə atıb bitirdikdən sonra sifarişini təstiqləyir 
+                            və açılan pəncərədə, alıcı olaraq öz məlumatlarını daxil edir və sifarişini yekunlaşdırır. 
+                            Bu zaman, səbətinə atıb aldığı komputerlər, həmin komputerlərin satıcılarının sifarişləri 
+                            bölməsində görünür.
+                        </p>
+                    </div>
+                    <div id="loginPage" class="container tab-pane fade">
+                        <br>
+                        <p class="h6 text-light">
+                            Bu bölmədə istifadəçi hesabına daxil ola bilər. 
+                            Həmçinin, əgər hesabı mövcud deyilsə, özü üçün 
+                            yeni hesab aça bilər. <br><br>
+
+                            Proqramı ilk dəfə açdığımızda 5 ədəd istifadəçi 
+                            artıq sistemdə qeydiyyat edilmiş olur. Bu istifadəçilər 
+                            aşağıdakılardır:
+
+                            <table class="table table-bordered text-light">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Istifadeci adi</th>
+                                        <th>Sifresi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>u1</td>
+                                        <td>p1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>u2</td>
+                                        <td>p2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>u3</td>
+                                        <td>p3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>u4</td>
+                                        <td>p4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>u5</td>
+                                        <td>p5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>admin</td>
+                                        <td>admin</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                    </div>
+
+                    <div id="myComputersPage" class="container tab-pane fade">
+                        <br>
+                        <p class="h6 text-light">
+                            Bu bölmədə satıcı öz komputerlərinin siyahısını görə bilir. 
+                            Həmçinin, yeni komputer qeydiyyatı edə bilər və siyahıdan 
+                            istədiyi komputerini seçib silə və redaktə edə bilər.
+                        </p>
+                    </div>
+
+                    <div id="ordersPage" class="container tab-pane fade">
+                        <br>
+                        <p class="h6 text-light">
+                            Bu bölmədə istifadəçi sifarişlərini görə bilər. Yəni, satıcı onun komputerlərini alan alıcıların məlumatlarını və hansı komputerləri almaq istədiklərinin siyahısını görə bilir.
+                        </p>
+                    </div>
+
+                    <div id="stepsPage" class="container tab-pane fade">
+                        <br>
+                            <table class="table table-light table-striped border-dark">
+                                <thead>
+                                    <tr>
+                                        <th><strong>S/N</strong></th>
+                                        <th>Addım</th>
+                                        <th>Dəyəri</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Əsas giriş səhifəsinin qurulması</td>
+                                        <td class="step-mark">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Yeni istifadəçi hesabının yaradılması</td>
+                                        <td class="step-mark">20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Yeni istifadəçi hesabının yaradılması zamanı, əgər istifadəçi adı mövcud olarsa, bildiriş vermək</td>
+                                        <td class="step-mark">5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>İstifadəçinin hesabına daxil olması</td>
+                                        <td class="step-mark">15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>İstifadəçinin hesabından çıxması</td>
+                                        <td class="step-mark">15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>İstifadəçinin yeni komputer qeydiyyat etməsi</td>
+                                        <td class="step-mark">30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>İstifadəçinin öz komputerlərinin siyahısını görməsi və axtarması</td>
+                                        <td class="step-mark">20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>İstifadəçinin öz komputerlərini silməsi</td>
+                                        <td class="step-mark">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>İstifadəçinin öz komputerlərini redaktə etməsi</td>
+                                        <td class="step-mark">20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Alıcı səhifəsinin komputer kateqoriyaları bölməsinin hazırlanması</td>
+                                        <td class="step-mark">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>Alıcı səhifəsinin komputerlərin siyahısı bölməsinin hazırlanması</td>
+                                        <td class="step-mark">30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Alıcı səhifəsində komputer axtarışı</td>
+                                        <td class="step-mark">25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>13</td>
+                                        <td>Alıcı səhifəsində komputer məlumatlarına ətraflı baxmaq</td>
+                                        <td class="step-mark">15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14</td>
+                                        <td>Alıcı səhifəsində komputerlərin səbətə atılması və səbət pəncərəsi</td>
+                                        <td class="step-mark">30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15</td>
+                                        <td>Səbət pəncərəsində komputer miqdarlarının dəyişdirilməsi</td>
+                                        <td class="step-mark">15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16</td>
+                                        <td>Səbət pəncərəsində komputerin silinməsi</td>
+                                        <td class="step-mark">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>17</td>
+                                        <td>Səbətin təmizlənməsi</td>
+                                        <td class="step-mark">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18</td>
+                                        <td>Səbətin təstiq edilməsi və qeydiyyat pəncərəsinin hazırlanması və sifarişin qeydiyyatı</td>
+                                        <td class="step-mark">35</td>
+                                    </tr>
+                                    <tr>
+                                        <td>19</td>
+                                        <td>İstifadəçinin öz sifarişlərini görməsi</td>
+                                        <td class="step-mark">25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20</td>
+                                        <td>İstifadəçinin sifarişlərini axtarması</td>
+                                        <td class="step-mark">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>21</td>
+                                        <td>Admin səhifəsinin hazırlanması</td>
+                                        <td class="step-mark">30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>22</td>
+                                        <td>Alıcı səhifəsində komputerlərin hissə-hissə yüklənməsi</td>
+                                        <td class="step-mark">40</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Ümumi dəyər</td>
+                                        <td id="totalValue"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

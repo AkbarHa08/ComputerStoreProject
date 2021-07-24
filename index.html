@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <title>Computer Shopping Web Site</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/responsive.css">
+      <script src="js/index.js" defer></script>
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <body class="main-layout">
+      <div class="alert alert-success" id="success-login-alert" style="display: none;">
+         Hesaba uğurla girdiniz
+       </div>
+       <div class="alert alert-danger" id="success-logout-alert" style="display: none;">
+         Hesabdan uğurla çıxdınız
+       </div>
+      <div class="loader_bg">
+         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      </div>
+      <header>
+         <div  class="head_top">
+            <div class="header">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                           <div class="center-desk">
+                              <div class="logo" style="margin: 14px 0 0 0;"> 
+                                 <a href="index.html" class="h4 text-success">COMPSTORE</a><br><br><br>
+                                 <span class="text-success" style="font-size: 30px;">User: </span><span class="h4 text-success" id="logged-in-user-name"></span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <nav class="navigation navbar navbar-expand-md navbar-light ">
+                           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                           <span class="navbar-toggler-icon"></span>
+                           </button>
+                           <div class="collapse navbar-collapse" id="navbarsExample04">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="settings.html">Settings</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="computers.html">My Computers</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="orders.html">Orders</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="shopping.html">Start Shopping</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="admin.html" style="display: none;" id="adminPageBtn">Admin</a>
+                                 </li>
+                              </ul>
+                              <div class="sign_btn" id="loginBtn"><a href="login.html">Sign in</a></div>
+                              <div class="sign_btn" id="logoutBtn"><button onclick="onLogout()">Log Out</button></div>
+                           </div>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- end header inner -->
+            <!-- end header -->
+            <!-- banner -->
+            <section class="banner_main">
+               <div class="container-fluid">
+                  <div class="row d_flex">
+                     <div class="col-md-5">
+                        <div class="text-bg">
+                           <h1>Computer and <br>laptop shop</h1>
+                           <!-- <strong>CompStore</strong>
+                           <span>Shopping Page</span> -->
+                           <a href="shopping.html">Buy Now</a>
+                        </div>
+                     </div>
+                     <div class="col-md-7 padding_right1">
+                        <div class="text-img">
+                           <figure><img src="images/top_img.png" alt="#"/></figure>
+                           <h3>01</h3>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </div>
+      </header>
+      <!-- end banner -->
+      <!-- about -->
+      <div id="about" class="about">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>About CompStore</h2>
+                     <span>The foundation of CompStore was laid in 2021 by Akbar Habibullayev.</span>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-8 offset-md-2 ">
+                  <div class="about_box ">
+                     <figure><img src="images/about_img.png" alt="#"/></figure>
+                     <a class="read_more" href="settings.html">Read more</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- about -->
+      <!-- best -->
+      <div id="" class="best">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Build With Best </h2>
+                     <span>The best computers in Azerbaijan are sold in CompStore.</span>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="best_box">
+                     <h4>The Cheapest <br>Price</h4>
+                     <p>The cheapest computers in Azerbaijan are in the CompStore</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="best_box">
+                     <h4>The Best <br>Quality</h4>
+                     <p>The best computers in Azerbaijan are in CompStore</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="best_box">
+                     <h4>Customer<br>Satisfaction</h4>
+                     <p>We have 100 % customer satisfaction.</p>
+                  </div>
+               </div>
+               <div class="col-md-12">
+                  <a class="read_more" href="shopping.html">Read more</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end best -->
+      <!-- request -->
+      <div id="contact" class="request">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Request a Call back</h2>
+                     <span>Send us your information right now and we will contact you</span>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="black_bg">
+                     <div class="row">
+                        <div class="col-md-7 ">
+                           <form class="main_form">
+                              <div class="row">
+                                 <div class="col-md-12 ">
+                                    <input class="contactus" placeholder="Name" type="text" name="Name">
+                                 </div>
+                                 <div class="col-md-12">
+                                    <input class="contactus" placeholder="Phone number" type="text" name=" Phone number">
+                                 </div>
+                                 <div class="col-md-12">
+                                    <input class="contactus" placeholder="Email" type="text" name="Email">
+                                 </div>
+                                 <div class="col-md-12">
+                                    <textarea class="textarea" placeholder="Message" type="text" name="Message "> Message </textarea>
+                                 </div>
+                                 <div class="col-sm-12">
+                                    <button class="send_btn">Send</button>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                        <div class="col-md-5">
+                           <div class="mane_img">
+                              <figure><img src="images/mane_img.jpg" alt="#"/></figure>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end request -->
+      <!-- two_box section -->
+      <div  class="two_box">
+         <div class="container-fluid">
+            <div class="row d_flex">
+               <div class="col-md-6">
+                  <div class="two_box_img">
+                     <figure><img src="images/leptop.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="two_box_img">
+                     <h2><span class="offer">15% </span>0ffer in even days of the week</h2>
+                     <p>CompStore has a 15% discount on single even days of each week.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end two_box section -->
+      <!-- testimonial -->
+      <div class="testimonial">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Customer reviews</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div id="myCarousel" class="carousel slide testimonial_Carousel " data-ride="carousel">
+                     <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                     </ol>
+                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <div class="container">
+                              <div class="carousel-caption ">
+                                 <div class="row">
+                                    <div  class="col-md-12">
+                                       <div class="test_box">
+                                          <h3>John Doe</h3>
+                                          <p><i class="padd_rightt0"><img src="images/te1.png" alt="#"/></i>I bought an Apple MacBook Air from the store and liked it very much. I recommend to everyone.<i class="padd_leftt0"><img src="images/te2.png" alt="#"/></i> <br>And thank you everyone</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    <div  class="col-md-12">
+                                       <div class="test_box">
+                                          <h3>John Doe</h3>
+                                          <p><i class="padd_rightt0"><img src="images/te1.png" alt="#"/></i> Great, fast timely work, went the extra mile during closing hours to keep me informed. Thanks guys! 👍🏾 <i class="padd_leftt0"><img src="images/te2.png" alt="#"/></i> <br>Thank You!</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    <div  class="col-md-12">
+                                       <div class="test_box">
+                                          <h3>John Doe</h3>
+                                          <p><i class="padd_rightt0"><img src="images/te1.png" alt="#"/></i>Quick and easy, very happy customer, Will highly recommend this place. Thank you for your great service!!! <i class="padd_leftt0"><img src="images/te2.png" alt="#"/></i> <br>Thank You!</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                     <span class="sr-only">Previous</span>
+                     </a>
+                     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                     <span class="sr-only">Next</span>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer>
+         <div class="footer">
+            <div class="container">
+               <center>
+               <div class="row">
+                  <!-- <div class="col-md-6">
+                     <div class="cont">
+                        <h3> <strong class="multi">Send Mail</strong><br>
+                           akbar.habibullayeff@gmail.com
+                        </h3>
+                     </div>
+                  </div> -->
+                  <div class="col-sm-12">
+                     <div class="cont_call">
+                        <h3> <strong class="multi"> Call Now</strong><br>
+                           (+994) 0558509277
+                        </h3>
+                     </div>
+                  </div>
+               </div>
+            </center>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>© 2021 All Rights Reserved. Design by <a href="https://akbarhabibullayev.000webhostapp.com" target="_blank"> Akbar Habibullayev</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <!-- <script src="js/plugin.js"></script> -->
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+   </body>
+</html>
+
