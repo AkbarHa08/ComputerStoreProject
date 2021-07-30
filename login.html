@@ -9,13 +9,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="js/index.js"></script>
     <script src="js/login.js" defer></script>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     <title>Login Page</title>
 </head>
-<body class="bg-dark">
-    <div class="container-fluid">
+<body class="">
+    <!-- <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4">
                 
@@ -58,6 +61,35 @@
             </div>
         </div>
         
-    </div>
+    </div> -->
+
+    <div class="wrapper">
+        <header>Hesaba daxil ol</header><br>
+        <div class="alert alert-danger" id="login-error-alert" style="display: none;"></div>
+
+        <div class="alert alert-success" id="login-success-alert" style="display: none;"></div>
+        <form action="#" onsubmit="onLogin(event)">
+          <div class="field email">
+            <div class="input-area">
+              <input type="text" placeholder="Username" id="username">
+              <i class="icon fas fa-user"></i>
+              <i class="error error-icon fas fa-exclamation-circle"></i>
+            </div>
+            <div class="error error-txt" id="username-blank-error">İstifadəçi adı boş qoyula bilməz!!!</div>
+          </div>
+          <div class="field password">
+            <div class="input-area">
+              <input type="password" placeholder="Password" id="password">
+              <i class="icon fas fa-lock"></i>
+              <i class="error error-icon fas fa-exclamation-circle"></i>
+            </div>
+            <div class="error error-txt" id="password-blank-error">Parol boş qoyula bilməz!!!</div>
+          </div>
+          <input type="submit" value="Login">
+        </form>
+        <div class="sign-txt">Hələdə hesabınız yoxdur? <a href="create-account.html">Hesab yarat</a></div>
+        <div class="sign-txt">Ana səhifəyə <a href="index.html">qayıt</a></div>
+      </div>
+    
 </body>
 </html>

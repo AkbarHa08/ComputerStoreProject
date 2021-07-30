@@ -8,13 +8,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
     <script src="js/create-account.js" defer></script>
     <!-- <script src="js/index.js"></script> -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/create-account.css">
     <title>Create Account Page</title>
 </head>
-<body class="bg-dark">
-    <div class="container-fluid">
+<body class="">
+    <!-- <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
@@ -73,6 +76,44 @@
         </div>
         
     </div>
-    <br>
+    <br> -->
+
+    <div class="center">
+        <div class="container">
+           <div class="text">
+              Hesab yarat
+           </div>
+           <div class="alert alert-success" id="user-created-alert" style="display: none;"></div>
+            <div class="alert alert-danger" id="user-exists-error-alert" style="display: none;"></div>
+           <form action="#" onsubmit="onCreateAccount(event)">
+              <div class="data">
+                 <label>Name</label>
+                 <input type="text" required placeholder="Adınız" id="user-full-name">
+              </div>
+              <div class="data">
+                 <label>Phone</label>
+                 <input type="tel" required pattern="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" placeholder="(XXX-XXX-XXXX)" id="user-phone-number">
+              </div>
+              <div class="data">
+                <label>Username</label>
+                <input type="text" required placeholder="İstifadəçi adınız" id="username">
+             </div>
+             <div class="data">
+                <label>Password</label>
+                <input type="password" required placeholder="Parolunuz" id="password">
+             </div>
+              <div class="btn">
+                 <div class="inner"></div>
+                 <button type="submit">Hesab yarat</button>
+              </div>
+              <div class="signup-link">
+                 Artıq hesabınız mövcuddur? <a href="login.html">Daxil olun</a>
+              </div>
+              <div class="signup-link">
+                Ana səhifəyə <a href="login.html">qayıt</a>
+             </div>
+           </form>
+        </div>
+     </div>
 </body>
 </html>

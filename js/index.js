@@ -78,16 +78,16 @@ function addObjects(){
     categories.push({id: 12, name: 'Sony'});
 
     // Add computers - Acer
-    computers.push({id: 1, name: 'Acer-1', price: 570, description: 'Acer-1 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
-    computers.push({id: 2, name: 'Acer-2', price: 570, description: 'Acer-2 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
-    computers.push({id: 3, name: 'Acer-3', price: 570, description: 'Acer-3 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
-    computers.push({id: 4, name: 'Acer-4', price: 570, description: 'Acer-4 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
-    computers.push({id: 5, name: 'Acer-5', price: 570, description: 'Acer-5 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
-    computers.push({id: 6, name: 'Acer-6', price: 570, description: 'Acer-6 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
-    computers.push({id: 7, name: 'Acer-7', price: 570, description: 'Acer-7 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
-    computers.push({id: 8, name: 'Acer-8', price: 570, description: 'Acer-8 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
-    computers.push({id: 9, name: 'Acer-9', price: 570, description: 'Acer-9 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
-    computers.push({id: 10, name: 'Acer-10', price: 570, description: 'Acer-10 desc', isNew: false, imagePath: 'images/acer.png',userId: 1, categoryId:1});
+    computers.push({id: 1, name: 'Acer-1', price: 570, description: 'Acer-1 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    computers.push({id: 2, name: 'Acer-2', price: 570, description: 'Acer-2 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    computers.push({id: 3, name: 'Acer-3', price: 570, description: 'Acer-3 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    computers.push({id: 4, name: 'Acer-4', price: 570, description: 'Acer-4 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    computers.push({id: 5, name: 'Acer-5', price: 570, description: 'Acer-5 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    computers.push({id: 6, name: 'Acer-6', price: 570, description: 'Acer-6 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    computers.push({id: 7, name: 'Acer-7', price: 570, description: 'Acer-7 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    computers.push({id: 8, name: 'Acer-8', price: 570, description: 'Acer-8 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    computers.push({id: 9, name: 'Acer-9', price: 570, description: 'Acer-9 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    computers.push({id: 10, name: 'Acer-10', price: 570, description: 'Acer-10 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
 
     var idCounter = 40;
     for(let i = 0 ; i< 40; i++){

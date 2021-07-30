@@ -41,11 +41,11 @@ function onCreateAccount(event){
     }
 
     if(usernameExists){
-        userExistsErrorAlertElemnt.innerHTML = 'Bu istifadeci adi artiq movcuddur';
+        userExistsErrorAlertElemnt.innerHTML = 'Bu istifadəçi adı artıq mövcuddur';
         userExistsErrorAlertElemnt.style.display = 'block';
         setTimeout(() => {
             userExistsErrorAlertElemnt.style.display = 'none';
-        }, 1000);
+        }, 1500);
     } else{
         var userId = 0;
         for(let i = 0; i < users.length; i++){
@@ -70,7 +70,8 @@ function onCreateAccount(event){
         
         setTimeout(() => {
             userCreatedAlertElement.style.display = 'none';
+            window.location.href = 'login.html';
         }, 1000);
-        window.location.href = 'login.html';
+        
     }
 }

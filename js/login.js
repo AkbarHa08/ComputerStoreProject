@@ -1,5 +1,7 @@
 var usernameElement = document.getElementById('username');
 var passwordElement = document.getElementById('password');
+var usernameBlankError = document.getElementById('username-blank-error');
+var passwordBlankError = document.getElementById('password-blank-error');
 
 var loginSuccessAlertElement = document.getElementById('login-success-alert');
 var loginErrorAlertElement = document.getElementById('login-error-alert');
@@ -19,6 +21,18 @@ function onLogin(event){
     var password = passwordElement.value;
 
     var userLoggedIn = false;
+
+    if(username==''){
+        usernameBlankError.style.display = 'block';
+    } else{
+        usernameBlankError.style.display = 'none';
+    }
+
+    if(password==''){
+        passwordBlankError.style.display = 'block';
+    } else{
+        passwordBlankError.style.display = 'none';
+    }
 
     for(let i=0;i<users.length;i++){
         const u = users[i];
