@@ -23,7 +23,7 @@
         <hr>
         <div class="row">
             <div class="col-sm-3">
-                <input type="search" id="category-search-input" class="form-control" placeholder="Axtaris..." oninput="">
+                <input type="search" id="category-search-input" class="form-control" placeholder="Axtarış..." oninput="searchCategory(this)">
                 <br>
                 <div id="computer-categories-div"></div>
             </div>
@@ -41,23 +41,24 @@
     </div>
 
     <button type="button" class="btn btn-primary" id="open-basket-button" onclick="onOpenBasket()">
-        Sebet <span id="basket-computer-count" class="badge badge-light">0</span>
+        Səbət <span id="basket-computer-count" class="badge badge-light">0</span>
     </button>
 
     <div id="computer-details-modal">
         <div id="computer-details-modal-content">
-            <span class="h2" style="text-align: center;">Komputer haqqinda etrafli melumat</span>
+            <span class="h2" style="text-align: center;">Komputer haqqında ətraflı məlumat</span>
             <div id="computer-modal-image-container"></div>
             <div id="computer-modal-name">Ad: </div>
-            <div id="computer-modal-description">Tesvir: </div>
-            <div id="computer-modal-price">Qiymet: </div>
+            <div id="computer-modal-description">Təsvir: </div>
+            <div id="computer-modal-price">Qiymət: </div>
             <div id="computer-modal-phone">Telefon: </div>
             <div id="computer-modal-isNew">Yeni: </div>
             <div id="computer-modal-ram">Ram: </div>
             <div id="computer-modal-cpu">Prosessor: </div>
-            <div id="computer-modal-drive">Daimi yaddas: </div>
-            <div id="computer-modal-drive-type">Daimi yaddas tipi: </div>
-            <div id="computer-modal-os">Emeliyyat sistemi: </div>
+            <div id="computer-modal-drive">Daimi yaddaş: </div>
+            <div id="computer-modal-drive-type">Daimi yaddaş tipi: </div>
+            <div id="computer-modal-os">Əməliyyat sistemi: </div>
+            <div id="computer-modal-video-card">Video kart: </div>
         </div>
     </div>
 
@@ -71,11 +72,11 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Sekil</th>
+                        <th>Şəkil</th>
                         <th>Ad</th>
-                        <th>Qiymet</th>
+                        <th>Qiymət</th>
                         <th>Miqdar</th>
-                        <th>Umumi Qiymet</th>
+                        <th>Ümumi Qiymət</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -83,12 +84,12 @@
             </table>
             <div style="overflow: auto;">
                 <span id="basket-total-price">
-                    Umumi Qiymet
+                    Ümumi qiymət
                     <span id="basket-total-price-content">0</span> AZN
                 </span>
 
-                <button onclick="" id="clear-basket-button" class="btn btn-danger">Sebeti temizle</button>
-                <button onclick="" id="confirm-order-button" class="btn btn-success">Sifarisi tesdiqle</button>
+                <button id="clear-basket-button" class="btn btn-danger" onclick="clearBasket()">Səbəti təmizlə</button>
+                <button id="confirm-order-button" class="btn btn-success" onclick="confirmOrder()">Sifarişi təsdiqlə</button>
             </div>
         </div>
     </div>
@@ -98,56 +99,56 @@
             <div style="overflow: auto; margin-bottom: 5px;">
                 <span id="confirm-order-modal-close-button">x</span>
             </div>
-            <span class="h1" style="text-align: center;">Elaqe melumatlarinizi yazin</span>
+            <span class="h1" style="text-align: center;">Əlaqə məlumatlarınızı yazin</span>
             <div id="confirm-order-modal-form-div">
-                <form action="" id="confirm-order-modal-form" class="was-validated" onsubmit="">
+                <form action="" id="confirm-order-modal-form" class="was-validated" onsubmit="onOrderSubmit(event)">
                     <div class="form-group">
                         <label for="customer-name">Ad:</label>
-                        <input type="text" name="customer-name" id="customer-name" placeholder="Adinizi yazin..." class="form-control" required minlength="2" maxlength="30">
-                        <div class="valid-feedback">Duzgundur.</div>
-                        <div class="invalid-feedback">Bos qoymayin. Minimum 2, maximum 30 simvol ola biler.</div>
+                        <input type="text" name="customer-name" id="customer-name" placeholder="Adınızı yazin..." class="form-control" required minlength="2" maxlength="30">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">Boş qoymayın. Minimum 2, maximum 30 simvol ola bilər.</div>
                     </div>
                     <div class="form-group">
                         <label for="customer-address">Unvan:</label>
-                        <input type="text" name="customer-address" id="customer-address" placeholder="Unvaninizi yazin..." class="form-control" required minlength="2" maxlength="30">
-                        <div class="valid-feedback">Duzgundur.</div>
-                        <div class="invalid-feedback">Bos qoymayin. Minimum 2, maximum 30 simvol ola biler.</div>
+                        <input type="text" name="customer-address" id="customer-address" placeholder="Ünvanınızı yazin..." class="form-control" required minlength="2" maxlength="30">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">Boş qoymayın. Minimum 2, maximum 30 simvol ola bilər.</div>
                     </div>
                     <div class="form-group">
                         <label for="customer-phone">Telefon:</label>
-                        <input type="text" name="customer-phone" id="customer-phone" placeholder="Elaqe nomrenizi daxil edin..." class="form-control" required pattern="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">
-                        <div class="valid-feedback">Duzgundur.</div>
-                        <div class="invalid-feedback">(xxx-xxx-xxxx) formatinda olmalidir.</div>
+                        <input type="text" name="customer-phone" id="customer-phone" placeholder="Əlaqə nömrənizi daxil edin..." class="form-control" required pattern="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">(xxx-xxx-xxxx) formatında olmalıdır.</div>
                     </div>
                     <div class="form-group">
                         <label for="customer-email">Email:</label>
-                        <input type="text" name="customer-email" id="customer-email" placeholder="E-Poct unvaninizi daxil edin..." class="form-control" required minlength="2" maxlength="30">
-                        <div class="valid-feedback">Duzgundur.</div>
-                        <div class="invalid-feedback">Bos qoymayin. Minimum 2, maximum 30 simvol ola biler.</div>
+                        <input type="text" name="customer-email" id="customer-email" placeholder="E-Poçt ünvanınızı daxil edin..." class="form-control" required minlength="2" maxlength="30">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">Boş qoyamyın. Minimum 2, maximum 30 simvol ola bilər.</div>
                     </div>
                     <div class="form-group">
                         <label for="customer-note">Qeyd:</label>
-                        <input type="text" name="customer-note" id="customer-note" placeholder="Qeydinizi yazin..." class="form-control" required minlength="2" maxlength="30">
-                        <div class="valid-feedback">Duzgundur.</div>
-                        <div class="invalid-feedback">Bos qoymayin. Minimum 2, maximum 30 simvol ola biler.</div>
+                        <input type="text" name="customer-note" id="customer-note" placeholder="Qeydinizi yazın..." class="form-control" required minlength="2" maxlength="30">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">Boş qoymayın. Minimum 2, maximum 30 simvol ola bilər.</div>
                     </div>
                     <div class="form-group form-check">
                         <label class="form-check-label">
                             <input type="checkbox" name="confirmation" class="form-check-input" required>
-                            Melumatlarin dogrulugunu tesdiq edin.
-                            <div class="valid-feedback">Tesdiq etdiniz.</div>
-                            <div class="invalid-feedback">Tesdiq etmelisiniz.</div>
+                            Məlumatların doğruluğunu təsdiq edin.
+                            <div class="valid-feedback">Təsdiq etdiniz.</div>
+                            <div class="invalid-feedback">Təsdiq etməlisiniz.</div>
                         </label>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Yadda saxla</button>   
+                    <button type="submit" class="btn btn-primary" onclick="onOrderSubmit(event)">Yadda saxla</button>   
                 </form>
             </div>
         </div>
     </div>
 
     <div id="fixed-elements"></div>
-    <input type="text" id="computer-search-input" class="form-control" placeholder="Axtaris...">
+    <input type="text" id="computer-search-input" class="form-control" placeholder="Axtarış..." onkeydown="onSearchKeyDown(event)">
 
 
 

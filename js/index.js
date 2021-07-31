@@ -2,6 +2,11 @@ var users = [];
 var categories = [];
 var computers = [];
 
+var settingsBtn = document.getElementById('settingsBtn');
+var computersBtn = document.getElementById('computersBtn');
+var ordersBtn = document.getElementById('ordersBtn');
+var shoppingBtn = document.getElementById('shoppingBtn');
+
 var loginButton = document.getElementById('loginBtn');
 
 var logoutButton = document.getElementById('logoutBtn');
@@ -30,9 +35,17 @@ if(showSuccessLoginMessage == null){
 
 function showButtons(){
     if(userLoggedIn){
+        settingsBtn.style.display = 'inline-block';
+        computersBtn.style.display = 'inline-block';
+        ordersBtn.style.display = 'inline-block';
+        shoppingBtn.style.display = 'inline-block';
         loginButton.style.display = 'none';
         logoutButton.style.display = 'inline-block';
     } else{
+        settingsBtn.style.display = 'inline-block';
+        computersBtn.style.display = 'none';
+        ordersBtn.style.display = 'none';
+        shoppingBtn.style.display = 'none';
         logoutButton.style.display = 'none';
         loginButton.style.display = 'inline-block';
     }

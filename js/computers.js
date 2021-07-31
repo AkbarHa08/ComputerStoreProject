@@ -31,7 +31,7 @@ var computers = [];
 var computersString = localStorage.getItem('computers');
 if(computersString==null){
 
-} else {
+} else{
     computers = JSON.parse(computersString);
 }
 
@@ -55,6 +55,8 @@ for(let i=0;i<computers.length;i++){
 }
 
 computers = userComputers;
+
+console.log(computers)
 
 var usersString = localStorage.getItem('users');
 var users = JSON.parse(usersString);

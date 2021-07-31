@@ -11,13 +11,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/admin.js" defer></script>
 </head>
-<body class="bg-dark">
+<body>
     <div class="container-fluid" id="main-content">
         <hr>
         <div class="row">
             <div class="col-sm-12">
                 <center>
-                <h2 class="text-light">Admin Səhifəsi</h2>
+                <h2 class="text-dark">Admin Səhifəsi</h2>
                 <hr>
                 <a href="index.html" class="btn btn-warning">Əsas Səhifə</a>
                 </center>
@@ -26,7 +26,7 @@
         <hr>
         <div class="row">
             <div class="col-sm-6">
-                <h3 style="text-align: center;" class="text-light">Kateqoriyalar</h3>
+                <h3 style="text-align: center;" class="text-dark">Kateqoriyalar</h3>
                 <input type="search" id="category-search-input" class="form-control" placeholder="Axtarış" oninput="searchCategory(this)">
                 <br>
                 <div id="computer-categories-div">
@@ -36,7 +36,7 @@
             <div class="col-sm-6">
                 <form class="was-validated" id="save-category-form" onsubmit="onSaveCategory(event)">
                     <div class="form-group">
-                        <label for="category-name-input" class="text-light">Kateqoriya</label>
+                        <label for="category-name-input" class="text-dark">Kateqoriya</label>
                         <input type="text" name="category-name-input" id="category-name-input" class="form-control" required minlength="2" maxlength="30" oninput="onCategoryNameChanged(this)">
                         <div class="valid-feedback">Doğrudur.</div>
                         <div class="invalid-feedback">Boş qoymayın. Minimum 2, maksimum 30 simvol ola bilər.</div>

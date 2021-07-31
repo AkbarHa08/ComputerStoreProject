@@ -26,7 +26,7 @@ var customerNameElement = document.getElementById('customer-name');
 var customerAddressElement = document.getElementById('customer-address');
 var customerPhoneElement = document.getElementById('customer-phone');
 var customerEmailElement = document.getElementById('customer-email');
-var customerOrderNoteElement = document.getElementById('customer-order-note');
+var customerOrderNoteElement = document.getElementById('customer-note');
 var computerSearchInputElement = document.getElementById('computer-search-input');
 var computerModalImageContainer = document.getElementById('computer-modal-image-container');
 var computersLoadingNext = document.getElementById('computers-loading-next');
@@ -70,7 +70,7 @@ function loadDataFromLocalStorage(){
         localStorage.setItem('computers',JSON.stringify(computers))
     } else{
         computers = JSON.parse(computersString);
-        computersGlobal = categories.slice();
+        computersGlobal = computers.slice();
     }
 
     if(basketComputersString==null){
@@ -202,6 +202,7 @@ function onComputerSelected(computerId){
     computerModalDrive.innerHTML += selectedComputer.drive;
     computerModalDriveType.innerHTML += selectedComputer.driveType == 'hdd' ? 'HDD' : 'SSD';
     computerModalOs.innerHTML += selectedComputer.os;
+    computerModalVideoCard.innerHTML += selectedComputer.videoCard;
 }
 
 window.addEventListener('click',function(){
@@ -270,12 +271,12 @@ function refreshComputersBasket() {
 }
 
 function calculateBasketTotalPrice(){
-    var totalPrice = 0;
+    var totalprice = 0;
     for(let i=0;i<basketComputers.length;i++){
         const b = basketComputers[i];
-        totalPrice+=b.count * b.computer.price;
+        totalprice+=b.count * b.computer.price;
     }
-    basketTotalPriceContentElement.innerHTML = totalPrice;
+    basketTotalPriceContentElement.innerHTML = totalprice;
 }
 
 calculateBasketTotalPrice();
@@ -357,3 +358,251 @@ function hideAndShowBasketButton(){
         showBasketComputerCount();
     } ,200)
 }
+
+function clearBasket(){
+        basketComputers.splice(0,basketComputers.length);
+        refreshComputersBasket();
+        localStorage.setItem('basket-computers',JSON.stringify(basketComputers));
+        calculateBasketTotalPrice();
+        hideAndShowBasketButton();
+        setTimeout(()=>{
+            closeBasket();
+        } ,500)
+}
+
+function confirmOrder(){
+    closeBasket();
+    setTimeout(()=>{
+        openConfirmOrderModalPage();
+    },200);
+
+}
+
+function fillCustomerInformation(){
+    var customersString = localStorage.getItem('order-customer');
+    var orderCustomer = [];
+    if(customersString==null){
+
+    }  else{
+        orderCustomer = JSON.parse(customersString);
+        customerNameElement.value = orderCustomer.name;
+        customerAddressElement.value = orderCustomer.address;
+        customerPhoneElement.value = orderCustomer.phone;
+        customerEmailElement.value = orderCustomer.email;
+        customerOrderNoteElement.value = orderCustomer.orderNote;
+    }
+}
+
+function openConfirmOrderModalPage(){
+    confirmOrderModalElement.style.display = 'block';
+    fillCustomerInformation();
+}
+
+confirmOrderModalCloseButtonElement.addEventListener('click',function(){
+    closeConfirmOrder();
+});
+
+function closeConfirmOrder(){
+    setTimeout(()=>{
+        confirmOrderModalElement.style.display = 'none';
+    } ,100)
+}
+
+function onOrderSubmit(event){
+    event.preventDefault();
+    var orderObject = {};
+    orderObject.note = customerOrderNoteElement.value;
+    orderObject.basketComputers = basketComputers;
+    var customer = {};
+    customer.name = customerNameElement.value;
+    customer.address = customerAddressElement.value;
+    customer.phone = customerPhoneElement.value;
+    customer.email = customerEmailElement.value;
+    orderObject.customer = customer;
+    orderObject.register = new Date();
+    var orders = [];
+    var orderString = localStorage.getItem('orders');
+    if(orderString == null){
+        localStorage.setItem('orders','[]');
+    } else{
+        orders = JSON.parse(orderString);
+    }
+
+    var userIdList = [];
+    for(let i=0;i<orderObject.basketComputers.length;i++){
+        const b = orderObject.basketComputers[i];
+        if(userIdList.includes(b.computer.userId)){
+
+        } else{
+            userIdList.push(b.computer.userId);
+        }
+    }
+
+
+    var orderId = 0;
+    for(let i=0;i<orders.length;i++){
+        const order = orders[i];
+        if(order.id>orderId){
+            orderId = order.id;
+        }
+    }
+
+    for(let i=0;i<userIdList.length;i++){
+        var orderObjectLocal = {};
+        orderId++;
+        orderObjectLocal.id = orderId;
+        orderObjectLocal.note = orderObject.note;
+        orderObjectLocal.basketComputers = [];
+        orderObjectLocal.userId = userIdList[i];
+        for(let j=0;j<orderObject.basketComputers.length;j++){
+            const b = orderObject.basketComputers[j];
+            if(b.computer.userId === userIdList[i]){
+                orderObjectLocal.basketComputers.push(b);
+            }
+        }
+        orderObjectLocal.customer = orderObject.customer;
+        orderObjectLocal.register = orderObject.register;
+        orderObjectLocal.totalprice = calculateOrderTotalPrice(orderObjectLocal);
+        orders.push(orderObjectLocal);
+    }
+
+    localStorage.setItem('orders',JSON.stringify(orders));
+    customer.orderNote = orderObject.note;
+    endOrderRegistration(customer);
+    
+}
+
+function endOrderRegistration(customer){
+    basketComputers.splice(0,basketComputers.length);
+    localStorage.setItem('basket-computers',JSON.stringify(basketComputers));
+    hideAndShowBasketButton();
+    localStorage.setItem('order-customer',JSON.stringify(customer));
+    closeConfirmOrder();
+    setTimeout(()=>{
+        showAlertMessage('Sifarişiniz qeydə alındı!',2000);
+    } ,1000)
+}
+
+function calculateOrderTotalPrice(order){
+    var totalprice = 0;
+    for(let i=0;i<order.basketComputers.length;i++){
+        const b = order.basketComputers[i];
+        totalprice += b.count * b.computer.price;
+    }
+
+    return totalprice;
+}
+
+var computersElementHTML = "";
+
+
+function addComputersToPage(computersLocal) {
+
+    for (var i = 0; i < computersLocal.length; i++) {
+        const c = computersLocal[i];
+        computersElementHTML += "<div class='computer-card-container' >" +
+            "<div class='computer-card' >" +
+            "<div class='computer-image' onclick='onComputerSelected(" + c.id + ")' style='background-image:url(" + c.imagePath + ");'></div>" +
+            "<div class='computer-data'><div class='computer-name' title='" +
+            c.name + "'>" + c.name + "</div>" +
+            "<div class='computer-description' title='" +
+            c.description + "'>" + c.description + "</div>" +
+            "<div class='computer-price' title='" + c.price + " AZN'>" +
+            c.price + " AZN</div>" +
+            "<div class='computer-new'>" + (c.isNew ? 'Bəli' : 'Xeyr') + "</div>" +
+            "<div class='user-phone' title='" + c.phone + "'>" + c.phone + "</div>" +
+            "<div class='add-to-basket-div'><button class='btn btn-primary' " +
+            "onclick='onAddToBasket(" +
+            c.id + ")'>Səbətə at</button></div>" +
+            "</div></div></div>";
+    }
+    computersElement.innerHTML = computersElementHTML;
+}
+
+function onSearchKeyDown(event){
+    if(event.keyCode == 13){
+        begin = 0;
+        allComputersLoaded = true;
+        computersElement.innerHTML = '';
+        computersElement.style.display = 'none';
+        computersLoading.style.display = 'block';
+        setTimeout(()=>{
+            computersLoading.style.display = 'none';
+            computersElementHTML = '';
+            var searchValue = event.target.value.toLowerCase();
+            searchValue = searchValue.trim();
+            var findedComputers = [];
+            // Eger butun komputerlerde axtaris edilerse
+            computersSelectedGlobal = computers.slice();
+            for (let i = 0; i < computersSelectedGlobal.length; i++) {
+                const c = computersSelectedGlobal[i];
+                if(c.name.toLowerCase().includes(searchValue)){
+                    findedComputers.push(c);
+                }
+            }
+
+            if(findedComputers.length <= length){
+                allComputersLoaded = true;
+            }
+
+            console.log('Finded computers length '+findedComputers.length);
+            computersSelectedGlobal = findedComputers.slice();
+            findedComputers = findedComputers.slice(begin, length);
+            addComputersToPage(findedComputers);
+            computersElement.style.display = 'block';
+            if(findedComputers.length == 0){
+                computersElement.innerHTML = '<h2 class="not-found">Bu axtarışa uyğun nəticə tapılmadı!</h2>'
+            }
+        },500)
+    }
+}
+
+//Kateqoriyaya gore axtaris
+
+function searchCategory(searchInput){
+    var searchText = searchInput.value.trim();
+    searchText = searchText.toLowerCase();
+    categories = [];
+    for(let i=0;i<categoriesGlobal.length;i++){
+        const c = categoriesGlobal[i];
+        if(c.name.toLowerCase().includes(searchText)){
+            categories.push(c);
+        }
+    }
+
+    loadComputerCategories();
+}
+
+window.addEventListener('scroll',function(){
+    if(allComputersLoaded){
+        console.log('Butun komputerler yuklenib');
+    } else{
+        if(allowScroll){
+            const distanceToBottom = this.document.body.getBoundingClientRect().bottom;
+            const clientHeight = this.document.documentElement.clientHeight;
+            if(distanceToBottom < clientHeight + 150){
+                allowScroll = false;
+                computersLoadingNext.style.display = 'block';
+                this.setTimeout(() => {
+                    if(computersSelectedGlobal.length <= (begin+length)){
+                        allComputersLoaded = true;
+                        computersLoadingNext.style.display = 'none';
+                    } else{
+                        begin += length;
+                        var nextComputers = computersSelectedGlobal.slice(begin, begin+length);
+                        addComputersToPage(nextComputers);
+                        computersLoadingNext.style.display = 'none';
+                    }
+
+                    allowScroll = true;
+                }, 1000);
+            }
+        }
+    }
+});
+
+window.addEventListener('load',function(){
+    setTimeout(() => {
+        allowScroll = true;
+    }, 500);
+})
